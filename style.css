@@ -19,13 +19,11 @@ body {
     display: flex;
     animation: marquee-animation var(--marquee-duration) linear infinite;
     will-change: transform;
-    width: 100%;
-    max-width: 1856px;
-    transform: translateZ(0); /* Force GPU acceleration */
+    width: 1856px;
 }
 
 .marquee-wrapper {
-    width: 928px;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     white-space: nowrap;
@@ -43,6 +41,6 @@ body {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-928px);
+        transform: translateX(-50%);
     }
 }
