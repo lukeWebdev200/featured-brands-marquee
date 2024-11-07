@@ -1,7 +1,3 @@
-:root {
-    --marquee-duration: 20s; /* Adjust this value for speed */
-}
-
 body {
     margin: 0;
     overflow: hidden;
@@ -24,22 +20,11 @@ body {
 
 .marquee-wrapper {
     display: flex;
-    animation: marquee-animation var(--marquee-duration) linear infinite;
-    width: calc(2 * 928px); /* Double the width to accommodate duplicate images */
+    white-space: nowrap;
 }
 
 .marquee-wrapper img {
     width: auto;
     height: 35px;
-    margin-right: 15px;
-}
-
-/* Keyframes for continuous scroll animation */
-@keyframes marquee-animation {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-928px); /* Move by exactly one set width */
-    }
+    margin-right: 15px; /* Adds space between images */
 }

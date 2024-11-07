@@ -9,20 +9,8 @@
 <body>
     <div class="box">
         <div class="marquee-container">
-            <div class="marquee-wrapper">
-                <!-- First set of images -->
-                <img src="./img/10_fm.jpg" alt="">
-                <img src="./img/12_fm.jpg" alt="">
-                <img src="./img/17_fm.jpg" alt="">
-                <img src="./img/18_fm.jpg" alt="">
-                <img src="./img/1_fm.jpg" alt="">
-                <img src="./img/5_fm.jpg" alt="">
-                <img src="./img/8_fm.jpg" alt="">
-                <img src="./img/9_fm.jpg" alt="">
-                <img src="./img/22_fm.jpg" alt="">
-                <img src="./img/23_fm.jpg" alt="">
-
-                <!-- Second set of images (duplicate of the first for continuous loop) -->
+            <div class="marquee-wrapper" id="marqueeWrapper">
+                <!-- Initial images -->
                 <img src="./img/10_fm.jpg" alt="">
                 <img src="./img/12_fm.jpg" alt="">
                 <img src="./img/17_fm.jpg" alt="">
@@ -36,6 +24,33 @@
             </div>
         </div>
     </div>
-    4th test
+    js
+    <script >
+        const marqueeWrapper = document.getElementById("marqueeWrapper");
+const images = Array.from(marqueeWrapper.children);
+
+// Duplicate images to create a seamless loop
+images.forEach(img => {
+    const clone = img.cloneNode(true);
+    marqueeWrapper.appendChild(clone);
+});
+
+let scrollPosition = 0;
+
+function animateMarquee() {
+    scrollPosition -= 1; // Adjust speed by changing this value
+    marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
+
+    // Reset position for seamless loop
+    if (Math.abs(scrollPosition) >= marqueeWrapper.scrollWidth / 2) {
+        scrollPosition = 0;
+    }
+
+    requestAnimationFrame(animateMarquee);
+}
+
+animateMarquee();
+
+    </script>
 </body>
 </html>
