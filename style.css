@@ -23,7 +23,6 @@ body {
     display: flex;
     white-space: nowrap;
     will-change: transform;
-    transition: transform 0.01s linear;
 }
 
 .marquee-wrapper img {

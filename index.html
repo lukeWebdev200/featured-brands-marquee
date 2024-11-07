@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seamless Marquee Animation</title>
+    <title>Continuous Marquee Animation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="box">
         <div class="marquee-container" id="marqueeContainer">
             <div class="marquee-wrapper" id="marqueeWrapper">
-                <!-- Initial images -->
                 <img src="./img/10_fm.jpg" alt="">
                 <img src="./img/12_fm.jpg" alt="">
                 <img src="./img/17_fm.jpg" alt="">
@@ -24,26 +23,29 @@
             </div>
         </div>
     </div>
+    appending js
+    
     <script>
         const marqueeWrapper = document.getElementById("marqueeWrapper");
 const marqueeContainer = document.getElementById("marqueeContainer");
 
-// Clone images several times to ensure seamless scrolling on Safari
-for (let i = 0; i < 3; i++) {
-    marqueeWrapper.innerHTML += marqueeWrapper.innerHTML;
-}
-
 let scrollPosition = 0;
+const scrollSpeed = 1; // Adjust this value for speed
 
 function animateMarquee() {
     // Move the marquee to the left
-    scrollPosition -= 1; // Adjust this value for speed; lower for slower scroll
+    scrollPosition -= scrollSpeed;
     marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
 
-    // Reset position to the start when it reaches halfway of the total width
-    const resetPoint = marqueeWrapper.scrollWidth / 3; // Adjust based on the number of clones
-    if (Math.abs(scrollPosition) >= resetPoint) {
-        scrollPosition = 0;
+    // Check if the first image is completely out of view
+    const firstImage = marqueeWrapper.querySelector("img");
+    if (firstImage && firstImage.getBoundingClientRect().right < 0) {
+        // Remove the first image and append it to the end
+        marqueeWrapper.appendChild(firstImage);
+        
+        // Reset scroll position to avoid cumulative translation
+        scrollPosition += firstImage.offsetWidth + 15; // add margin if any
+        marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
     }
 
     requestAnimationFrame(animateMarquee);
