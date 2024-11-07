@@ -1,5 +1,5 @@
 :root {
-    --marquee-duration: 15s; /* Adjusted duration for a smoother experience */
+    --marquee-duration: 20s; /* Adjust this value for speed */
 }
 
 body {
@@ -17,15 +17,15 @@ body {
 
 .marquee-container {
     display: flex;
-    animation: marquee-animation var(--marquee-duration) linear infinite;
-    will-change: transform;
+    overflow: hidden;
+    width: 100%;
+    height: 35px;
 }
 
 .marquee-wrapper {
-    width: 1856px; /* Adjusted to accommodate two full sets of images */
     display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
+    animation: marquee-animation var(--marquee-duration) linear infinite;
+    width: calc(2 * 928px); /* Double the width to accommodate duplicate images */
 }
 
 .marquee-wrapper img {
@@ -34,12 +34,12 @@ body {
     margin-right: 15px;
 }
 
-/* Keyframes for marquee animation */
+/* Keyframes for continuous scroll animation */
 @keyframes marquee-animation {
     from {
-        transform: translate3d(0, 0, 0);
+        transform: translateX(0);
     }
     to {
-        transform: translate3d(-928px, 0, 0);
+        transform: translateX(-928px); /* Move by exactly one set width */
     }
 }
