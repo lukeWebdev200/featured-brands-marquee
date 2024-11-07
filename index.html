@@ -28,12 +28,10 @@
         const marqueeWrapper = document.getElementById("marqueeWrapper");
 const marqueeContainer = document.getElementById("marqueeContainer");
 
-// Clone images to ensure a seamless loop
-const originalImages = Array.from(marqueeWrapper.children);
-originalImages.forEach(img => {
-    const clone = img.cloneNode(true);
-    marqueeWrapper.appendChild(clone);
-});
+// Clone images several times to ensure seamless scrolling on Safari
+for (let i = 0; i < 3; i++) {
+    marqueeWrapper.innerHTML += marqueeWrapper.innerHTML;
+}
 
 let scrollPosition = 0;
 
@@ -43,7 +41,7 @@ function animateMarquee() {
     marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
 
     // Reset position to the start when it reaches halfway of the total width
-    const resetPoint = marqueeWrapper.scrollWidth / 2;
+    const resetPoint = marqueeWrapper.scrollWidth / 3; // Adjust based on the number of clones
     if (Math.abs(scrollPosition) >= resetPoint) {
         scrollPosition = 0;
     }
