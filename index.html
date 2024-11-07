@@ -23,36 +23,34 @@
             </div>
         </div>
     </div>
-    appending js
-    
     <script>
         const marqueeWrapper = document.getElementById("marqueeWrapper");
-const marqueeContainer = document.getElementById("marqueeContainer");
+        const marqueeContainer = document.getElementById("marqueeContainer");
 
-let scrollPosition = 0;
-const scrollSpeed = 1; // Adjust this value for speed
+        let scrollPosition = 0;
+        const scrollSpeed = 1; // Adjust this value for speed
 
-function animateMarquee() {
-    // Move the marquee to the left
-    scrollPosition -= scrollSpeed;
-    marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
+        function animateMarquee() {
+            // Move the marquee to the left
+            scrollPosition -= scrollSpeed;
+            marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
 
-    // Check if the first image is completely out of view
-    const firstImage = marqueeWrapper.querySelector("img");
-    if (firstImage && firstImage.getBoundingClientRect().right < 0) {
-        // Remove the first image and append it to the end
-        marqueeWrapper.appendChild(firstImage);
-        
-        // Reset scroll position to avoid cumulative translation
-        scrollPosition += firstImage.offsetWidth + 15; // add margin if any
-        marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
-    }
+            // Check if the first image is completely out of view
+            const firstImage = marqueeWrapper.querySelector("img");
+            if (firstImage && firstImage.getBoundingClientRect().right < 0) {
+                // Remove the first image and append it to the end
+                marqueeWrapper.appendChild(firstImage);
+                
+                // Reset scroll position to avoid cumulative translation
+                scrollPosition += firstImage.offsetWidth + 15; // add margin if any
+                marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
+            }
 
-    requestAnimationFrame(animateMarquee);
-}
+            requestAnimationFrame(animateMarquee);
+        }
 
-// Start the animation
-animateMarquee();
+        // Start the animation
+        animateMarquee();
 
     </script>
 </body>
