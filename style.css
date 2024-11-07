@@ -1,5 +1,5 @@
 :root {
-    --marquee-duration: 15s; /* Adjust this value to control speed */
+    --marquee-duration: 20s; /* Adjust this value for speed */
 }
 
 body {
@@ -25,7 +25,7 @@ body {
 .marquee-wrapper {
     display: flex;
     animation: marquee-animation var(--marquee-duration) linear infinite;
-    width: calc(2 * 928px); /* Adjust based on image total width, here it’s 2 x 928px for two sets */
+    width: calc(2 * 928px); /* Double the width to accommodate duplicate images */
 }
 
 .marquee-wrapper img {
@@ -34,12 +34,12 @@ body {
     margin-right: 15px;
 }
 
-/* Keyframes for marquee animation */
+/* Keyframes for continuous scroll animation */
 @keyframes marquee-animation {
     from {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-928px); /* Move by exactly one set's width */
+        transform: translateX(-928px); /* Move by exactly one set width */
     }
 }
