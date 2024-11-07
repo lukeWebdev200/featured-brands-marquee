@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Continuous Marquee Animation</title>
+    <title>Marquee Animation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="box">
-        <div class="marquee-container" id="marqueeContainer">
-            <div class="marquee-wrapper" id="marqueeWrapper">
+        <div class="marquee-container">
+            <div class="marquee-wrapper">
+                <img src="./img/10_fm.jpg" alt="">
+                <img src="./img/12_fm.jpg" alt="">
+                <img src="./img/17_fm.jpg" alt="">
+                <img src="./img/18_fm.jpg" alt="">
+                <img src="./img/1_fm.jpg" alt="">
+                <img src="./img/5_fm.jpg" alt="">
+                <img src="./img/8_fm.jpg" alt="">
+                <img src="./img/9_fm.jpg" alt="">
+                <img src="./img/22_fm.jpg" alt="">
+                <img src="./img/23_fm.jpg" alt="">
+            </div>
+            <div class="marquee-wrapper">
                 <img src="./img/10_fm.jpg" alt="">
                 <img src="./img/12_fm.jpg" alt="">
                 <img src="./img/17_fm.jpg" alt="">
@@ -23,49 +35,5 @@
             </div>
         </div>
     </div>
-    asdasd
-    <script >
-        const marqueeWrapper = document.getElementById("marqueeWrapper");
-const marqueeContainer = document.getElementById("marqueeContainer");
-
-// Get all the images in the wrapper
-let images = Array.from(marqueeWrapper.children);
-
-// Clone images to ensure continuous scrolling
-images.forEach(img => {
-    const clonedImage = img.cloneNode(true);
-    marqueeWrapper.appendChild(clonedImage);
-});
-
-// Track the scroll position
-let scrollPosition = 0;
-const scrollSpeed = 1; // Adjust this value for speed
-
-// Calculate the total width of all images (with margin included)
-function calculateTotalWidth() {
-    return Array.from(marqueeWrapper.children).reduce((totalWidth, img) => {
-        return totalWidth + img.offsetWidth + 15; // Add margin
-    }, 0);
-}
-
-let totalWidth = calculateTotalWidth();
-
-function animateMarquee() {
-    // Move the marquee to the left
-    scrollPosition -= scrollSpeed;
-    marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
-
-    // If the first set of images has completely scrolled out of view, reset scroll position
-    if (Math.abs(scrollPosition) >= totalWidth / 2) {
-        scrollPosition = 0;
-    }
-
-    requestAnimationFrame(animateMarquee);
-}
-
-// Start the animation
-animateMarquee();
-
-    </script>
 </body>
 </html>
