@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seamless Marquee Animation</title>
+    <title>Marquee Animation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="box">
-        <div class="marquee-container" id="marqueeContainer">
-            <div class="marquee-wrapper" id="marqueeWrapper">
-                <!-- Initial images -->
+        <div class="marquee-container">
+            <div class="marquee-wrapper">
+                <img src="./img/10_fm.jpg" alt="">
+                <img src="./img/12_fm.jpg" alt="">
+                <img src="./img/17_fm.jpg" alt="">
+                <img src="./img/18_fm.jpg" alt="">
+                <img src="./img/1_fm.jpg" alt="">
+                <img src="./img/5_fm.jpg" alt="">
+                <img src="./img/8_fm.jpg" alt="">
+                <img src="./img/9_fm.jpg" alt="">
+                <img src="./img/22_fm.jpg" alt="">
+                <img src="./img/23_fm.jpg" alt="">
+            </div>
+            <div class="marquee-wrapper">
                 <img src="./img/10_fm.jpg" alt="">
                 <img src="./img/12_fm.jpg" alt="">
                 <img src="./img/17_fm.jpg" alt="">
@@ -24,37 +35,5 @@
             </div>
         </div>
     </div>
-    6th
-    <script >
-        const marqueeWrapper = document.getElementById("marqueeWrapper");
-const marqueeContainer = document.getElementById("marqueeContainer");
-
-// Clone images to ensure a seamless loop
-const originalImages = Array.from(marqueeWrapper.children);
-originalImages.forEach(img => {
-    const clone = img.cloneNode(true);
-    marqueeWrapper.appendChild(clone);
-});
-
-let scrollPosition = 0;
-
-function animateMarquee() {
-    // Move the marquee to the left
-    scrollPosition -= 1; // Adjust this value for speed; lower for slower scroll
-    marqueeWrapper.style.transform = `translateX(${scrollPosition}px)`;
-
-    // Reset position to the start when it reaches halfway of the total width
-    const resetPoint = marqueeWrapper.scrollWidth / 2;
-    if (Math.abs(scrollPosition) >= resetPoint) {
-        scrollPosition = 0;
-    }
-
-    requestAnimationFrame(animateMarquee);
-}
-
-// Start the animation
-animateMarquee();
-
-    </script>
 </body>
 </html>
