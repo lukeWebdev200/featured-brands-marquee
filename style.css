@@ -1,38 +1,29 @@
 .container {
+    overflow: hidden;
+    width: 100%;
+}
 
+.loop-text-wrapper {
     display: flex;
     white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    font-family: sans-serif;
-
- }
-
+}
 
 .loop-text {
+    display: flex;
+    animation: loopText 10s linear infinite; /* Adjust duration for scroll speed */
+}
 
-    font-size: clamp(2.5rem, 8vw, 5.5rem);
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0 0.25em;
-
- }
- .loop-text img{
-    width: 500px;
+.loop-text img {
+    width: 500px; /* Adjust as needed */
     height: auto;
- }
- .loop-text {
-    animation: loopText 1s infinite linear;      
+    padding: 0 0.25em;
 }
 
 @keyframes loopText {
-
-  from {
-      transform: translateX(0);
-   }
-
-  to {
-      transform: translateX(-100%);
-   }
-
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%); /* Adjust based on container width and content */
+    }
 }
