@@ -10,7 +10,7 @@
 
 .loop-text {
     display: flex;
-    animation: loopText 10s linear infinite; /* Adjust duration for scroll speed */
+    animation: loopText 20s linear infinite; /* Adjust duration for scroll speed */
 }
 
 .loop-text img {
